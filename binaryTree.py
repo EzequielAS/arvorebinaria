@@ -126,16 +126,29 @@ class BinaryTree:
         }[typeOfNavigation](node)
 
 
-    def transformBinaryTreeIntoBinarySearchTree(self, node, binarySearch=None):
-        if binarySearch == None:
-            binarySearch = BinarySearchTree(node)
-
-        if node == None:
+    def getAllNodes(self, currentNode, nodes=[]):
+        if currentNode == None:
             return None
+        
+        nodes.append(Node(currentNode.value))
 
-        binarySearch.insertNode(node.value)
-        self.transformBinaryTreeIntoBinarySearchTree(node.leftChild)
-        self.transformBinaryTreeIntoBinarySearchTree(node.rightChild)
+        self.getAllNodes(currentNode.leftChild, nodes)
+        self.getAllNodes(currentNode.rightChild, nodes)
+
+        return nodes
+
+
+    def transformBinaryTreeIntoBinarySearchTree(self, node=None):
+        if node == None:
+            node = self.nodeRoot
+
+        nodes = self.getAllNodes(node)
+        
+        binarySearch = BinarySearchTree()
+
+        for _node in nodes:
+            binarySearch.insertNode(_node)
+
 
     
     def toString(self, node):
