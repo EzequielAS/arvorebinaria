@@ -149,6 +149,8 @@ class BinaryTree:
         for _node in nodes:
             binarySearch.insertNode(_node)
 
+        binarySearch.navigation(binarySearch.nodeRoot)
+
 
     
     def toString(self, node):
