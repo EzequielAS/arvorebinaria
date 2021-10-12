@@ -18,10 +18,26 @@ binaryTree.insertNode(nodeD, 'L', nodeB)
 binaryTree.insertNode(nodeE, 'R', nodeB)
 binaryTree.insertNode(nodeF, 'L', nodeC)
 
-# binaryTree.navigation('LNR', nodeRoot)
+print('Left-Right-Node')
+print(' ')
+binaryTree.navigation('LRN', nodeRoot)
+print(' ')
 
+print('Left-Node-Right')
+print(' ')
+binaryTree.navigation('LNR', nodeRoot)
+print(' ')
+
+print('Node-Left-Right')
+print(' ')
+binaryTree.navigation('NLR', nodeRoot)
+print(' ')
+
+print('Árvore Binária')
+print(' ')
+binaryTree.printTree(nodeRoot)
+print(' ')
+
+print('Árvore Binária de Busca')
+print(' ')
 binaryTree.transformBinaryTreeIntoBinarySearchTree(binaryTree.nodeRoot)
-
-
-#tree.erd(nodeRoot)
-#tree.toString(nodeRoot)

@@ -25,11 +25,14 @@ class BinarySearchTree:
         return self.insertNode(node, root.leftChild) if node.value < root.value else self.insertNode(node, root.rightChild)
 
 
-    def navigation(self, node):
+    def printTree(self, node, counter=0):
         if node == None:
             return None
 
-        self.navigation(node.leftChild)
-        print(node.value)
-        self.navigation(node.rightChild)
+        newCounter = counter
+        blankSpace = ' '*counter
+        
+        print(f'{blankSpace}{node.value}')
+        self.printTree(node.rightChild if node.rightChild != None else None, newCounter+1)
+        self.printTree(node.leftChild if node.leftChild != None else None, newCounter+1)
 

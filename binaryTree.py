@@ -65,14 +65,6 @@ class BinaryTree:
             return (True if node is self.nodeRoot else False)
 
 
-    def erd(self, node):
-
-        if(node != None):
-            self.erd(node.leftChild)
-            print("{0}".format(node.value))
-            self.erd(node.rightChild)
-
-
     def remove(self, node):
         if(node.hasBothChild()):
             print('ERROR - esta ação não é possível')
@@ -149,20 +141,19 @@ class BinaryTree:
         for _node in nodes:
             binarySearch.insertNode(_node)
 
-        binarySearch.navigation(binarySearch.nodeRoot)
+        binarySearch.printTree(binarySearch.nodeRoot)
 
 
     
-    def toString(self, node):
-        result = '  '
-        if(node != None):
-            if self.isRoot(node):
-                print(node.value)
-            if(node.hasLeftChild() == True):
-                result += node.leftChild.value + ' '
-                self.toString(node.leftChild)
-            elif(node.hasRightChild() == True):
-                result += node.rightChild.value + ''
-                self.toString(node.rightChild) 
-            print(result)
+    def printTree(self, node, counter=0):
+        if node == None:
+            return None
+
+        newCounter = counter
+        blankSpace = ' '*counter
+        
+        print(f'{blankSpace}{node.value}')
+        self.printTree(node.rightChild if node.rightChild != None else None, newCounter+1)
+        self.printTree(node.leftChild if node.leftChild != None else None, newCounter+1)
+        
                
